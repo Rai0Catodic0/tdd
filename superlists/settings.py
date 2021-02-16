@@ -75,13 +75,26 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
+DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': ‘<db_name>’,
+
+        'USER': '<db_username>',
+
+        'PASSWORD': '<password>',
+
+        'HOST': 'postgres://mttpbbxbueheoc:9415f124d6352b983e542d7bc97ef1aaa0bb840c451668118789401bcf43cb6c@ec2-52-22-161-59.compute-1.amazonaws.com:5432/d1or7sfjer1r06',
+
+        'PORT': '<db_port>',
+
+    }
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
