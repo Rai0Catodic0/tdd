@@ -1,7 +1,8 @@
 # teste funcional == teste de aceitação == end to end test
 
-import  os
+import os
 from django.contrib.staticfiles.testing import  StaticLiveServerTestCase
+from unittest import skip
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from  selenium.common.exceptions import WebDriverException
@@ -10,12 +11,13 @@ import time
 MAX_WAIT = 10
 
 class NewVisitorTest(StaticLiveServerTestCase):
+
     def setUp(self):
         self.browser = webdriver.Firefox()
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
             self.live_server_url = 'http://'+staging_server
-
+    
     def tearDown(self):
         self.browser.quit()
 
@@ -135,3 +137,19 @@ class NewVisitorTest(StaticLiveServerTestCase):
             512,
             delta=10
         )
+    @skip
+    def test_cannot_add_empty_list_items(self):
+        # Edith goes to the home page and accidentally tries to submit
+        # an empty list item. She hits Enter on the empty input box
+
+        # The home page refreshes, and there is an error message saying
+        # that list items cannot be blank
+
+        # She tries again with some text for the item, which now works
+
+        # Perversely, she now decides to submit a second blank list item
+
+        # She receives a similar warning on the list page
+
+        # And she can correct it by filling some text in
+        self.fail('write me!')
