@@ -31,9 +31,9 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'console':{
+        'console': {
             'level': 'DEBUG',
-            'class': 'loggin.StreamHandler',
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
