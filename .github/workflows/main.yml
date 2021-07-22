@@ -28,7 +28,7 @@ jobs:
           pip3 install pytest
 
       - name: executa o black
-        run: black --check functional_tests
+        run: black functional_tests --check 
         
       - name: executa o isort
         run: isort --check functional_tests
