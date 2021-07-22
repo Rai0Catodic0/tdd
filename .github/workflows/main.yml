@@ -8,7 +8,7 @@ on:
   push:
   
 jobs:
-  executa_linter:
+  executa_black:
     runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
@@ -23,18 +23,66 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip3 install black 
-          pip3 install isort
-          pip3 install pydocstyle
-          pip3 install pytest
 
       - name: executa o black
         run: black functional_tests --check 
+                
+
+    executa_isort:
+        runs-on: ubuntu-latest
+    steps:
+      - name: Realiza o checkout
+        uses: actions/checkout@v2
+      
+      - name: Instala o python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
         
+      - name: Instala as dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install isort
+
       - name: executa o isort
         run: isort --check functional_tests
+
+
+    executa_pydocstyle:
+        runs-on: ubuntu-latest
+    steps:
+      - name: Realiza o checkout
+        uses: actions/checkout@v2
+      
+      - name: Instala o python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
         
+      - name: Instala as dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install pydocstyle
+
       - name: Executa o  pydosctyle
         run: pydocstyle functional_tests
+
+
+    executa_pytest:
+        runs-on: ubuntu-latest
+    steps:
+      - name: Realiza o checkout
+        uses: actions/checkout@v2
+      
+      - name: Instala o python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
         
+      - name: Instala as dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install pytest
+
       - name: Exeutas os tests unitários
         run: pytest
