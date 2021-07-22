@@ -9,7 +9,7 @@ on:
   
 jobs:
   executa_linter:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
         uses: actions/checkout@v2
