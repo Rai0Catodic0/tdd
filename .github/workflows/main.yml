@@ -28,8 +28,8 @@ jobs:
         run: black functional_tests --check 
                 
 
-    executa_isort:
-        runs-on: ubuntu-latest
+  executa_isort:
+      runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
         uses: actions/checkout@v2
@@ -48,7 +48,7 @@ jobs:
         run: isort --check functional_tests
 
 
-    executa_pydocstyle:
+  executa_pydocstyle:
         runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
@@ -68,7 +68,7 @@ jobs:
         run: pydocstyle functional_tests
 
 
-    executa_pytest:
+  executa_pytest:
         runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
