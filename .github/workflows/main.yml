@@ -19,20 +19,22 @@ jobs:
         with:
           python-version: 3.7
         
-      - name: Instal o poetry
-        uses: Gr1N/setup-poetry@v4
-      
       - name: Instala as dependencias
-        run: poetry install
-      
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install black 
+          pip3 install isort
+          pip3 install pydocstyle
+          pip3 install pytest
+          
       - name: executa o black
-        run: poetry run black --check app
+        run: black --check app
         
       - name: executa o isort
-        run: poetry run isort --check app
+        run: isort --check app
         
       - name: Executa o  pydosctyle
-        run: posetry run pydocstyle app
+        run: pydocstyle app
         
       - name: Exeutas os tests unitários
-        run: poetry run pytest
+        run: pytest
