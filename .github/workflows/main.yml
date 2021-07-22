@@ -1,0 +1,38 @@
+
+# This is a basic workflow to help you get started with Actions
+
+name: Integração Cotínua
+
+# Controls when the workflow will run
+on:
+  push:
+  
+jobs:
+  executa_linter:
+    runs-on: ubunto-latest
+    steps:
+      - name: Realiza o checkout
+        uses: actions/checkout@v2
+      
+      - name: Instala o python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+        
+      - name: Instal o poetry
+        uses: Gr1N/setup-poetry@v4
+      
+      - name: Instala as dependencias
+        run: poetry install
+      
+      - name: executa o black
+        run: poetry run black --check app
+        
+      - name: executa o isort
+        run: poetry run isort --check app
+        
+      - name: Executa o  pydosctyle
+        run: posetry run pydocstyle app
+        
+      - name: Exeutas os tests unitários
+        run: poetry run pytest
