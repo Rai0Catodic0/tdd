@@ -26,15 +26,15 @@ jobs:
           pip3 install isort
           pip3 install pydocstyle
           pip3 install pytest
-          
+
       - name: executa o black
-        run: black --check app
+        run: black --check functional_tests
         
       - name: executa o isort
-        run: isort --check app
+        run: isort --check functional_tests
         
       - name: Executa o  pydosctyle
-        run: pydocstyle app
+        run: pydocstyle functional_tests
         
       - name: Exeutas os tests unitários
         run: pytest
